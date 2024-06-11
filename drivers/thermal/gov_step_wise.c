@@ -94,14 +94,7 @@ static void thermal_zone_trip_update(struct thermal_zone_device *tz,
 			continue;
 
 		if (trip->type == THERMAL_TRIP_PASSIVE) {
-			/*
-			 * If the target state for this thermal instance
-			 * changes from THERMAL_NO_TARGET to something else,
-			 * ensure that the zone temperature will be updated
-			 * (assuming enabled passive cooling) until it becomes
-			 * THERMAL_NO_TARGET again, or the cooling device may
-			 * not be reset to its initial state.
-			 */
+			/* If needed, update the status of passive polling. */
 			if (old_target == THERMAL_NO_TARGET &&
 			    instance->target != THERMAL_NO_TARGET)
 				tz->passive++;
