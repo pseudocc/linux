@@ -13,7 +13,6 @@
 #include <dt-bindings/leds/common.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator.h>
 
-
 #include "sc8280xp.dtsi"
 #include "sc8280xp-pmics.dtsi"
 
@@ -132,7 +131,7 @@
 					reg = <0>;
 
 					pmic_glink_con0_hs: endpoint {
-						remote-endpoint = <&usb_0_dwc3_hs>;
+						remote-endpoint = <&usb_0_role_switch>;
 					};
 				};
 
@@ -167,7 +166,7 @@
 					reg = <0>;
 
 					pmic_glink_con1_hs: endpoint {
-						remote-endpoint = <&usb_1_dwc3_hs>;
+						remote-endpoint = <&usb_1_role_switch>;
 					};
 				};
 
@@ -1277,7 +1276,7 @@
 	dr_mode = "host";
 };
 
-&usb_0_dwc3_hs {
+&usb_0_role_switch {
 	remote-endpoint = <&pmic_glink_con0_hs>;
 };
 
@@ -1315,7 +1314,7 @@
 	dr_mode = "host";
 };
 
-&usb_1_dwc3_hs {
+&usb_1_role_switch {
 	remote-endpoint = <&pmic_glink_con1_hs>;
 };
 
