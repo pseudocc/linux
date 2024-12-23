@@ -5319,6 +5319,9 @@ static bool rtl_aspm_is_safe(struct rtl8169_private *tp)
 	if (tp->mac_version >= RTL_GIGA_MAC_VER_61 &&
 	    r8168_mac_ocp_read(tp, 0xc0b2) & 0xf)
 		return true;
+	else if (tp->mac_version == RTL_GIGA_MAC_VER_46 ||
+		 tp->mac_version == RTL_GIGA_MAC_VER_51)
+		return true;
 
 	return false;
 }
